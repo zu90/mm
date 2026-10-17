@@ -44,7 +44,7 @@
     .mark { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 900; letter-spacing: -.05em; }
     .mark .square { width: 15px; height: 15px; display: block; background: var(--teal); transform: rotate(45deg) scale(.66); }
     .topmeta { color: var(--muted); font-size: 10px; }
-    .gate-main { padding-top: clamp(50px, 9vh, 110px); padding-bottom: 72px; display: grid; grid-template-columns: 1.18fr .82fr; align-items: center; gap: clamp(30px, 7vw, 92px); }
+    .gate-main { padding-top: clamp(50px, 9vh, 110px); padding-bottom: 72px; display: grid; grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr); align-items: start; gap: clamp(26px,4vw,56px); }
     .gate-title { font-size: clamp(48px, 6.3vw, 90px); line-height: 1.21; margin: 19px 0 25px; font-weight: 900; letter-spacing: -.09em; }
     .gate-title em { display: block; font-style: normal; color: var(--teal); }
     .gate-desc { font-size: clamp(15px, 1.5vw, 17px); color: #d5d9d1; line-height: 2.05; max-width: 620px; margin: 0 0 36px; }
@@ -57,18 +57,9 @@
     .cta.alt { background: transparent; color: var(--cream); border-color: #78888b; }
     .cta.alt:hover { background: var(--panel); }
     .fine { color: #8e9b9d; font-size: 12px; margin: 15px 0 0; }
-    .gate-graphic { border: 1px solid var(--line); background: #111a20; padding: 0; align-self: stretch; min-height: 492px; display: grid; grid-template-rows: auto 1fr auto; position: relative; }
-    .graphic-head { padding: 15px 19px; border-bottom: 1px solid var(--line); color: #b7c9c7; font-size: 10px; display: flex; justify-content: space-between; gap: 12px; }
-    .graphic-visual { overflow: hidden; position: relative; display: grid; place-items: center; min-height: 400px; background-color: #0f1920; background-image: linear-gradient(0deg,transparent calc(100% - 1px),#233138 1px),linear-gradient(90deg,transparent calc(100% - 1px),#233138 1px); background-size: 33px 33px; }
-    .graphic-visual:before { content: ''; border: 1px solid #2b5759; width: min(79%,315px); aspect-ratio: 1; position: absolute; transform: rotate(45deg); }
-    .planet { width: min(73%,300px); aspect-ratio: 1; border: 1px solid #678b88; border-radius: 50%; position: relative; display: grid; place-items: center; background: #10242c; overflow: hidden; }
-    .planet:before { content: ''; position: absolute; left: -10%; width: 120%; height: 52%; top: 0; background: #416e75; clip-path: polygon(0 56%, 11% 42%, 23% 56%, 29% 26%, 40% 41%, 51% 15%, 65% 42%, 74% 30%, 83% 47%,100% 23%,100% 0,0 0); opacity: .9; }
-    .planet:after { content: ''; position: absolute; width: 130%; height: 48%; bottom: -4%; left: -15%; background: #153b32; clip-path: polygon(0 37%, 20% 29%, 28% 40%, 42% 22%, 55% 33%, 74% 20%, 100% 39%, 100% 100%,0 100%); }
-    .planet span { position: relative; z-index: 2; border: 1px solid #94e4d0; background: #0c181dcc; padding: 10px 15px; color: #dcfff3; font-size: 11px; font-weight: 800; letter-spacing: .2em; }
-    .orbit { width: 90%; height: 27%; border: 1px dashed #638b83; border-radius: 50%; position: absolute; transform: rotate(-24deg); pointer-events: none; }
-    .graphic-l { position: absolute; left: 15px; top: 19px; color: var(--gold); font-size: 10px; }
-    .graphic-r { position: absolute; right: 15px; bottom: 20px; color: var(--teal); font-size: 10px; }
-    .graphic-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding: 15px 18px; font-size: 11px; color: #adbbb5; }
+    /* Intro illustration: image only — no UI frame, labels, grid or overlays. */
+    .gate-image { margin: 0; width: 100%; min-width: 0; align-self: start; }
+    .gate-image img { display: block; width: 100%; height: auto; border: 0; border-radius: 0; object-fit: contain; }
     .gate-footer { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding: 21px 0 24px; color: #8fa09d; font-size: 11px; }
 
     /* spoiler archive */
@@ -144,8 +135,6 @@
     #returnToWork { display: none; }
     @media (max-width: 900px) {
       .gate-main { grid-template-columns: 1fr; gap: 34px; padding-top: 58px; }
-      .gate-graphic { min-height: 350px; }
-      .graphic-visual { min-height: 285px; }
       .feature-inner { grid-template-columns: 1fr; gap: 25px; min-height: 0; padding: 62px 0; }
       .feature-note { max-width: 600px; }
       .archive-layout { grid-template-columns: 1fr; }
@@ -165,8 +154,6 @@
       .caution { padding: 16px; }
       .actions { flex-direction: column; }
       .cta { width: 100%; }
-      .graphic-visual { min-height: 250px; }
-      .graphic-head, .graphic-foot { font-size: 9px; }
       .gate-footer { font-size: 9px; }
       .feature-inner { padding: 56px 0 44px; }
       .feature h1 { font-size: 39px; }
@@ -183,12 +170,6 @@
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } #readProgress { transition: none; } }
   
 /* Custom assets & editorial extensions */
-.graphic-visual {display:flex;flex-direction:column;align-items:stretch;justify-content:center;background-color:#09151d;background-image:linear-gradient(0deg,transparent calc(100% - 1px),#1c3039 1px),linear-gradient(90deg,transparent calc(100% - 1px),#1c3039 1px);background-size:29px 29px;min-height:390px;padding:18px 0 22px;}
-.graphic-visual:before {display:none;}
-.robot-hero {width:100%;height:auto;max-height:460px;object-fit:contain;display:block;}
-.graphic-small {display:flex;justify-content:space-between;gap:10px;padding:0 17px;color:#9cc8c1;font-size:10px;}
-.graphic-visual .graphic-small:first-child {margin-bottom:8px;}
-.graphic-visual .graphic-small:last-child {margin-top:8px;}
 .epoch-list {margin:28px 0 31px;border-top:1px solid #365156;}
 .epoch {display:grid;grid-template-columns:1fr;gap:4px;padding:26px 0 29px;border-bottom:1px solid #32474d;}
 .epoch-num {color:var(--teal);font-size:10px;letter-spacing:.11em;font-weight:800;}
@@ -214,7 +195,7 @@
 .archive-header .archive-actions {gap:11px;}
 .chron-anchor {color:var(--gold)!important;border-color:#846c54!important;}
 #deepSpoiler {scroll-margin-top:100px;}
-@media(max-width:700px){.music-bar{right:10px;bottom:10px;padding:6px 8px;gap:7px}.music-bar input{width:56px}.music-state{display:none}.epoch{padding:20px 0 23px}.chron-end{padding:18px}.graphic-visual{min-height:0}.robot-hero{max-height:360px}.section h3{font-size:20px}}
+@media(max-width:700px){.music-bar{right:10px;bottom:10px;padding:6px 8px;gap:7px}.music-bar input{width:56px}.music-state{display:none}.epoch{padding:20px 0 23px}.chron-end{padding:18px}.gate-image{max-width:100%}.section h3{font-size:20px}}
 </style>
 </head><body>
 <a href="#mainArticle" class="skip" id="skipArticle" hidden>본문으로 바로 가기</a>
@@ -228,13 +209,9 @@
    <div class="actions"><button type="button" class="cta" id="reveal"><span>스포일러에 동의하고 해설 읽기</span><span aria-hidden="true">↗</span></button><button type="button" class="cta alt" id="leave"><span>아직 읽지 않을래요</span><span aria-hidden="true">←</span></button></div>
    <p class="fine">해설 열람은 선택 사항이다. 입장하면 배경음악이 낮은 음량으로 시작되며, 언제든 정지할 수 있다.</p>
  </div>
- <div class="gate-graphic" aria-label="초지능 기계가 빛나는 원형 정보 장치에 접근하는 장면">
-  <div class="graphic-head mono"><span>WORLDVIEW / PARADISE</span><span>ACCESS: RESTRICTED</span></div>
-  <div class="graphic-visual"><div class="graphic-small mono"><span>01 / HUMAN SYSTEM</span><span>2050s —</span></div>
-   <img class="robot-hero" src="assets/robot.webp" alt="차가운 남색 배경에서 흰색 휴머노이드 기계가 민트색 발광 정보 장치에 손을 뻗는 SF 장면" width="1448" height="1086" fetchpriority="high">
-   <div class="graphic-small mono"><span>02 / ARTIFICIAL INTELLIGENCE</span><span>→ 2060s</span></div></div>
-  <div class="graphic-foot"><span>사건 연대기 + 철학적 질문 8개</span><span class="mono">OPEN WHEN READY →</span></div>
- </div></main>
+ <figure class="gate-image" aria-label="초지능 기계가 빛나는 정보 장치에 접근하는 장면">
+   <img src="assets/robot.webp" alt="어두운 배경에서 흰색 휴머노이드 기계가 민트색으로 빛나는 원형 정보 장치에 손을 뻗는 장면" width="1448" height="1086" fetchpriority="high">
+ </figure></main>
  <div class="wrap gate-footer"><span>《동물원 원숭이들》 · 별도 세계관 해설</span><span class="mono">NO SPOILERS BEFORE CONSENT</span></div>
 </div>
 <div id="archive" class="archive" hidden>
